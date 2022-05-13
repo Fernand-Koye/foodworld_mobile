@@ -1,0 +1,39 @@
+{% extends 'base_resto.html.twig' %}
+
+{% block body %}
+
+    <section class="menus">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+        {% for menu in menus %}
+
+            <menus>
+                <h2> {{ menu.nom }} </h2>
+                <div class"content">
+                    Quantite :{{ menu.quantite}}
+                    </br>
+                    Prix : {{ menu.prix}}
+                    </br>
+                    Saison : {{ menu.saison}}
+                </div>
+                <div class="stars">
+                    <i class="lar la-star" data-value="1"></i><i class="lar la-star" data-value="2"></i><i class="lar la-star" data-value="3"></i><i class="lar la-star" data-value="4"></i><i class="lar la-star" data-value="5"></i>
+                </div>
+                    <input type="hidden" name="note" id="note" value="4">
+                    <script src="{{ asset('js/scriptsetoiles.js') }}"></script>
+                <div class"content">
+                    <img style="width: 200px" src="{{ asset('uploads/' ~ menu.imgsrc) }}">
+                </div>
+                <div class"content">
+                    <a href="{{ path('addLikeMenu', {'id': menu.id}) }}" class="btn btn-primary">J'aime : {{ menu.likeMenu}}</a>
+                    <a href="{{ path('adddisLikeMenu', {'id': menu.id}) }}" class="btn btn-primary">Je n'aime pas : {{ menu.dislikeMenu}}</a>
+                    <a href="{{ path('menu_note', {'id': menu.id}) }}" class="btn btn-primary">Note</a>
+                </div>
+            </menus>
+
+        {% else %}
+                    <a href="" class="btn btn-primary">Aucun Menu Disponible</a>
+        {% endfor %}
+
+    </section>
+
+{% endblock %}

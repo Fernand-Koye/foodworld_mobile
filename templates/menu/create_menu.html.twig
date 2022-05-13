@@ -1,0 +1,22 @@
+{% extends 'gerant.html.twig' %}
+
+{% block  body%}
+
+    <section class="menus">
+
+        <h1>Creation d'un menu</h1>
+
+        {{ form_start(formResto, {'attr':{'novalidate':'novalidate'}}) }}
+        
+        {{ form_row(formResto.nom, {'attr': {'placeholder': "Nom du menu" }}) }}
+        {{ form_row(formResto.quantite, {'attr': {'placeholder': "Quantite" }}) }}
+        {{ form_row(formResto.prix, {'attr': {'placeholder': "Prix" }}) }}
+        {{ form_row(formResto.imgsrc) }}
+        {{ form_row(formResto.dateMiseEnRayon, {'attr': {'placeholder': "Date mise en rayon" }}) }}
+        {{ form_row(formResto.datePeremption, {'attr': {'placeholder': "Date Peremption" }}) }}
+
+        {{ form_end(formResto) }}
+
+    </section>
+
+{% endblock %}

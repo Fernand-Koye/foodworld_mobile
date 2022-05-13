@@ -1,0 +1,43 @@
+{% extends 'base_resto.html.twig' %}
+
+{% block body %}
+    <section class="restaurants">
+        <restaurant>
+            <h2> {{ restaurant.nom }} </h2>
+            <div class"content">
+            Position : {{ restaurant.position }}
+            </br>
+            date d'entrer : {{ restaurant.dateEntrer | date('d/m/Y')}}
+            </br>
+                Ayant pour proprietaire : {{ restaurant.gerantRestaurant }}
+            </div>
+            <div class"content">
+                <img style="width: 200px" src="{{ asset('uploads/' ~ restaurant.image) }}">
+            </div>
+            <div class"content">
+                <a href="{{ path('addLike', {'id': restaurant.id}) }}" class="btn btn-primary"> Like : {{ restaurant.likeRestaurant}}</a>
+                <a href="{{ path('adddisLike', {'id': restaurant.id}) }}" class="btn btn-primary"> Dislike : {{ restaurant.dislikeRestaurant}}</a>
+            </div>
+            <br />
+            <div class"content">
+                <h1>commentaire</h1>
+                {% for comment in commentaire %}
+                    {{ comment.contenu }} ecrit le {{ comment.dateCreation | date('d/m/Y') }} à {{ comment.dateCreation | date('H:i') }}
+                    <a href="{{ path('modifierCommentaire', {'id': comment.id, 'idRestaurant': restaurant.id}) }}" >Modifier </a>
+                    <a href="{{ path('supprimerCommentaire', {'id': comment.id, 'idRestaurant': restaurant.id}) }}" >Supprimer </a>
+                    <br />
+                {% else %}
+                    Aucun commentaire
+                {% endfor %}
+            </div>
+            <br />
+            <div class"content">
+                {{ form_start(formCommentaire, {'attr':{'novalidate':'novalidate'}}) }}
+                
+                {{ form_row(formCommentaire.contenu, {'attr': {'placeholder': "Entrer votre commentaire" }}) }}
+
+                {{ form_end(formCommentaire) }}
+            </div>
+        </restaurant>
+    </section>
+{% endblock %}

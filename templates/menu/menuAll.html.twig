@@ -1,0 +1,37 @@
+{% extends 'gerant.html.twig' %}
+
+{% block body %}
+
+    <section class="menus">
+
+        {% for menu in menus %}
+
+            <menus>
+                <h2> {{ menu.nom }} </h2>
+                <div class"content">
+                    Quantite : {{ menu.quantite}}
+                </div>
+                <div class"content">
+                    Prix : {{ menu.prix}} dinars
+                </div>
+                <div class"content">
+                    Saison : {{ menu.saison}}
+                </div>
+                <div class"content">
+                    <img style="width: 200px" src="{{ asset('uploads/' ~ menu.imgsrc) }}">
+                </div>
+                <div class"content">
+                    <a href="{{ path('gerant_update', {'id': menu.id}) }}" class="btn btn-primary">Update le plat</a>
+                    <a href="{{ path('gerant_delete', {'id': menu.id}) }}" class="btn btn-primary">Delete le plat</a>
+                </div>
+                <div class"content">
+                    <a href="" class="btn btn-primary">J'aime : {{ menu.likeMenu}}</a>
+                    <a href="" class="btn btn-primary">Je n'aime pas : {{ menu.dislikeMenu}}</a>
+                </div>
+            </menus>
+
+        {% endfor %}
+
+    </section>
+
+{% endblock %}

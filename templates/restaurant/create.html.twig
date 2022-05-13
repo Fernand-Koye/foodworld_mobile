@@ -1,0 +1,21 @@
+{% extends 'back.html.twig' %}
+
+{% block  body%}
+
+    <section class="restaurants">
+
+        <h1>Creation d'un Restaurant</h1>
+
+        {{ form_start(formRestaurant, {'attr':{'novalidate':'novalidate'}}) }}
+        
+        {{ form_row(formRestaurant.nom, {'attr': {'placeholder': "Nom de l'article" }}) }}
+        {{ form_row(formRestaurant.position, {'attr': {'placeholder': "Position de l'article" }}) }}
+        {{ form_row(formRestaurant.dateEntrer, {'attr': {'placeholder': "Date d'adhesion de l'article" }}) }}
+        {{ form_row(formRestaurant.image, {'attr': {'placeholder': "Image" }}) }}
+        {{ form_row(formRestaurant.gerantRestaurant, {'attr': {'placeholder': "Gerant Restaurant" }}) }}
+
+        {{ form_end(formRestaurant) }}
+
+    </section>
+
+{% endblock %}

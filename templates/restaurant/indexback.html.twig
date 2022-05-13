@@ -1,0 +1,32 @@
+{% extends 'back.html.twig' %}
+
+{% block body %}
+
+    <section class="restaurants">
+
+        {% for restaurant in restaurants %}
+
+            <restaurant>
+                <h2> {{ restaurant.nom }} </h2>
+                <div class"content">
+                Position : {{ restaurant.position }}
+                </br>
+                date d'entrer : {{ restaurant.dateEntrer | date('d/m/Y')}}
+                </br>
+                Ayant pour proprietaire : {{ restaurant.gerantRestaurant }}
+                </div>
+                <div class"content">
+                   <img style="width: 200px" src="{{ asset('uploads/' ~ restaurant.image) }}">
+                </div>
+                <div class"content">
+                <a href="{{ path('show_back', {'id': restaurant.id}) }}" class="btn btn-primary">Lire la suite</a>
+                <a href="{{ path('back_update', {'id': restaurant.id}) }}" class="btn btn-primary">Update l'article</a>
+                <a href="{{ path('back_delete', {'id': restaurant.id}) }}" class="btn btn-primary">Delete l'article</a>
+                </div>
+            </restaurant>
+
+        {% endfor %}
+
+    </section>
+
+{% endblock %}

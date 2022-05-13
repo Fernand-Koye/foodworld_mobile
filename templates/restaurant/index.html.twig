@@ -1,0 +1,32 @@
+{% extends 'base_resto.html.twig' %}
+
+{% block body %}
+
+    <section class="restaurants">
+
+        {% for restaurant in restaurants %}
+
+            <div class="col-12 col-sn-6 col-lg-4 col-xl-3 restaurant">
+                <h2> {{ restaurant.nom }} </h2>
+
+                <div class"content">
+                    Position : {{ restaurant.position }}
+                    </br>
+                    Date d'entrer : {{ restaurant.dateEntrer | date('d/m/Y')}}
+                    </br>
+                    Ayant pour proprietaire : {{ restaurant.gerantRestaurant }}
+                </div>
+                <div class"content">
+                    <img style="width: 200px" src="{{ asset('uploads/' ~ restaurant.image) }}">
+                </div>
+                <div class"content">
+                    <a href="{{ path('projet_show', {'id': restaurant.id}) }}" class="btn btn-primary">Lire la suite</a>
+                    <a href="{{ path('menu_show', {'id': restaurant.id}) }}" class="btn btn-primary">Afficher Menu</a>
+                </div>
+            </div>
+
+        {% endfor %}
+
+    </section>
+
+{% endblock %}

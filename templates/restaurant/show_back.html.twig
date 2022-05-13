@@ -1,0 +1,19 @@
+{% extends 'back.html.twig' %}
+
+{% block body %}
+    <section class="restaurants">
+        <restaurant>
+            <h2> {{ restaurant.nom }} </h2>
+            <div class"content">
+            Position : {{ restaurant.position }}
+            </br>
+            date d'entrer : {{ restaurant.dateEntrer | date('d/m/Y')}}
+            </br>
+                Ayant pour proprietaire : {{ restaurant.gerantRestaurant }}
+            </div>
+            <div class"content">
+                <img style="width: 200px" src="{{ asset('uploads/' ~ restaurant.image) }}">
+            </div>
+        </restaurant>
+    </section>
+{% endblock %}
